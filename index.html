@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <link rel="stylesheet" href="./styles.css">
+  
+  <title>Frontend Mentor | Todo app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="bg-img">
+      <!-- <img src="./images/bg-mobile-dark.jpg" id="bgImg"> -->
+    </div>
+    <div class="bg-color">
+      
+    </div>
+    <div class="container">
+      <div class="todo-wrapper">
+      <nav>
+        <h3 class="logo">
+          TODO
+        </h3>
+        <div class="theme">
+          <button class="theme-btn">
+            <img src="./images/icon-sun.svg" class="sun">
+          <img src="./images/icon-moon.svg" class="moon">
+          </button>
+        </div>
+      </nav>
+      <section class="main">
+        <form class="form">
+          <div class="input-group">
+            <input type="text" id="todo">
+            <div class="placeholders">
+            <span class="checkbox">
+              <img src="./images/icon-check.svg" class="input-check">
+            </span>
+            <p class="placeholder">Create a new todo...</p>
+            </div>
+          </div>
+        </form>
+        <div class="list-container">
+        <ul class="list-items">
+          <div class="list">
+          <!-- <li class="list-item checked">
+            <span class="checkbox">
+              <img src="./images/icon-check.svg" class="input-check">
+            </span>
+            <div class="text-container">
+              <p class="todo-text">become good at js</p>
+            </div>
+            <img src="./images/icon-cross.svg" class="cross">
+          </li>
+          <li class="list-item">
+            <span class="checkbox">
+              <img src="./images/icon-check.svg" class="input-check">
+            </span>
+            <div class="text-container">
+              <p class="todo-text">become good at js and everything</p>
+            </div>
+            <img src="./images/icon-cross.svg" class="cross">
+          </li> -->
+        </div>
+          <li class="list-info">
+            <p class="items-number">5 items left</p>
+            <ul class="filter-container">
+              <li class="current-filter" data-id="all">All</li>
+              <li data-id="active">Active</li>
+              <li data-id="completed">Completed</li>
+
+            </ul>
+            <p class="delete-completed">Clear completed</p>
+          </li>
+        </ul>
+      </div>
+      </section>
+    </div>
+    <p class='drag'>Drag and drop to reorder list</p>
+  </div>
+    
+  </main>
+ 
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+
+  <!-- here goes javascript -->
+  <script src="./main.js"></script>
+</body>
+</html>
