@@ -51,6 +51,19 @@ function addTodo(e){
         attr.value = 'active';
         element.setAttributeNode(attr);
 
+        // set the attribute to make the draggable when they are created and also give a unique id to the item
+        const dragAttr = document.createAttribute('draggable')
+        dragAttr.value = 'true'
+        element.setAttributeNode(dragAttr)
+
+        let index = list.children.length;
+        const idAttr = document.createAttribute('id')
+        idAttr.value = `${index + 1}`
+        element.setAttributeNode(idAttr)
+        
+        
+        
+
         element.innerHTML = `
         <span class="checkbox">
         <img src="./images/icon-check.svg" class="input-check">
@@ -152,12 +165,20 @@ clear.addEventListener('click', () => {
     itemsLength();
 })
 
+// dealing with the drag and drop
+    if(list.children.length > 1){
+        const childs = list.querySelectorAll('.list-item');
+        handleDrag(childs)
+        handleDrop(childs)
+    }
 
 
     }else {
         alert("enter a todo");
     }
 }
+
+// end of todo function
 
 function completeTask(e){
     const target = e.currentTarget;
@@ -179,7 +200,63 @@ function deleteElement(e){
 
 }
 
+//function handler of the drag and drop features
 
-// deeal with the clear items part
+
+function handleDrop(item){
+    //set an drop event listener on all of them
+        item.forEach((li) => {
+            li.ondrop = function(e){
+                e.preventDefault()
+
+                //get the draggable item by using it data (it id)
+                let data = e.dataTransfer.getData('text');
+                let draggableItem = document.getElementById(data)
+                
+                //create two values for defining the indexes of the draggable element and the droppable
+                let draggableElementNewIndex;
+                let dropTargetNewIndex;
+
+
+                // select all the items once again so that we will know their actualised index
+                let newList = list.querySelectorAll('.list-item');
+                newList.forEach((element,index) => {
+                    if(element === draggableItem){
+                        draggableElementNewIndex = index;
+                    }
+                })
+
+                newList.forEach((elm,idx) => {
+                    if(elm === li){
+                        dropTargetNewIndex = idx;
+                    }
+                })
+                
+                // use the index of the elements to decide where to put the elements
+                if(draggableElementNewIndex < dropTargetNewIndex){
+                    e.currentTarget.after(draggableItem)
+                    
+                }else { 
+                    e.currentTarget.before(draggableItem)
+                }
+            }
+        })
+}
+
+function handleDrag(items){
+    items.forEach(li => {
+        li.ondragover = function(e){
+            e.preventDefault()
+        }
+
+        li.ondragstart = function(e){
+            e.dataTransfer.setData('text', e.target.id)
+        }
+    })
+}
+
+// drag and drop essay
+
+
 
 
